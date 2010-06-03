@@ -30,12 +30,12 @@ PCF8574::PCF8574(PinName sda, PinName scl, int address)
 
 int PCF8574::read() {
     char foo[1];
-    _i2c.read(_addr, foo, 1);
+    _i2c.read(_address, foo, 1);
     return foo[0];
 }
 
 void PCF8574::write(int data) {
     char foo[1];
     foo[0] = data;
-    _i2c.write(_addr, foo, 1);
+    _i2c.write(_address, foo, 1);
 }
