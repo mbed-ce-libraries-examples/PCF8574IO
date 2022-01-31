@@ -1,7 +1,7 @@
 /* mbed PCF8574 Library, for driving the I2C I/O Expander
  * Copyright (c) 2008-2010, cstyles, sford
  *               2022, 001: JohnnyK, Reworked Constructor to I2C object instead of I2C pins. I can be usefull with anoter I2C slave on same bus
- *               2022, 002: JohnnyK, Added Namespace IO for compatibility with TextLCD library
+ *               2022, 002: JohnnyK, Changed class name for compatibility with TextLCD library
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,34 +27,31 @@
 #ifndef MBED_PCF8574_H
 #define MBED_PCF8574_H
 
-namespace IO{
-
-    /** Interface to the popular PCF8574 I2C 8 Bit IO expander */
-    class PCF8574 {
-        public:
-            /** Create an instance of the PCF8574 connected I2C object, with the specified address.
-             *
-             * @param Mbed I2C object
-             * @param address The I2C address for this PCF8574
-             */
-            PCF8574(I2C *i2c, int address);
-        
-            /** Read the IO pin level
-             *
-             * @return The byte read
-             */
-            int read();
+/** Interface to the popular PCF8574 I2C 8 Bit IO expander */
+class PCF8574IO {
+    public:
+        /** Create an instance of the PCF8574 connected I2C object, with the specified address.
+         *
+         * @param Mbed I2C object
+         * @param address The I2C address for this PCF8574
+         */
+        PCF8574IO(I2C *i2c, int address);
             
-            /** Write to the IO pins
-             * 
-             * @param data The 8 bits to write to the IO port
-             */
-            void write(int data);
+        /** Read the IO pin level
+         *
+         * @return The byte read
+         */
+        int read();
+                
+        /** Write to the IO pins
+         * 
+         * @param data The 8 bits to write to the IO port
+         */
+        void write(int data);
         
-        private:
-            I2C *_i2c;
-            int _address;
-    };
-}
+    private:
+        I2C *_i2c;
+        int _address;
+};
 
 #endif
