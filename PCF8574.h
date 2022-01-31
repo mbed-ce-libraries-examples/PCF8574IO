@@ -1,5 +1,6 @@
 /* mbed PCF8574 Library, for driving the I2C I/O Expander
  * Copyright (c) 2008-2010, cstyles, sford
+ *               2022, 001: JohnnyK, Reworked Constructor to I2C object instead of I2C pins. I can be usefull with anoter I2C slave on same bus
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,13 +29,12 @@
 /** Interface to the popular PCF8574 I2C 8 Bit IO expander */
 class PCF8574 {
 public:
-    /** Create an instance of the PCF8574 connected to specfied I2C pins, with the specified address.
+    /** Create an instance of the PCF8574 connected I2C object, with the specified address.
      *
-     * @param sda The I2C data pin
-     * @param scl The I2C clock pin
+     * @param Mbed I2C object
      * @param address The I2C address for this PCF8574
      */
-    PCF8574(PinName sda, PinName scl, int address);
+    PCF8574(I2C *i2c, int address);
 
     /** Read the IO pin level
      *
@@ -49,7 +49,7 @@ public:
     void write(int data);
 
 private:
-    I2C _i2c;
+    I2C *_i2c;
     int _address;
 };
 
