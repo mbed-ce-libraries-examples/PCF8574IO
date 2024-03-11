@@ -1,6 +1,6 @@
 # PCF8574IO library for MbedCE
 
-Library for interfacing 8bit (8 pins) [PCF8574](https://www.ti.com/product/PCF8574) GPIO expender under MbedCE.
+Library for interfacing 8bit (8 pins) [PCF8574](https://www.ti.com/product/PCF8574) I2C GPIO expender under MbedCE.
 
 ## How to start
 1. Create a new project according to [MbedCE instructions](https://github.com/mbed-ce/mbed-os/wiki)
